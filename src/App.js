@@ -46,9 +46,7 @@ useEffect(()=> {
         </div>
       </Route>
       <Route path='/account'>
-        <AccountInfo accountInfo={accountInfo}/>
-        <Link to='/update'><button onClick={() => console.log(accountInfo)}>Click here to update address information.</button></Link>
-        <Link to='/'><button>Click here to return to the homepage</button></Link>
+          <AccountInfo accountInfo={accountInfo}/>
       </Route>
       <Route path='/update'>
         <Form updateAddress={updateAddress}/>
