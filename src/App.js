@@ -40,6 +40,7 @@ useEffect(()=> {
       <h1 className='title'>Recurly Take Home</h1>
       <Route exact path='/'>
         <div className='main-page'>
+          <h2 className="welcome">Welcome to Recurly</h2>
           <Link to='/account'>
             <button>Click for Account Info</button>
           </Link>

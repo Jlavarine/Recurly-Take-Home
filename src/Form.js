@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
-
+import './Form.css'
 const Form = ({updateAddress}) => {
     const [ street1, setStreet1] = useState('');
     const [ street2, setStreet2] = useState('');
@@ -17,7 +17,7 @@ const Form = ({updateAddress}) => {
     }
     return (
         <div className='form-container'>
-          <form onSubmit={(event) => submitUpdate(event)}>
+          <form className='form' onSubmit={(event) => submitUpdate(event)}>
             <h2>Update Address</h2>
             <input
             type='text'

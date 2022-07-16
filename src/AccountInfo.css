@@ -1,3 +1,7 @@
+span {
+    font-weight: bolder;
+}
+
 .account-info {
     display: flex;
     flex-direction: column;

@@ -23,16 +23,22 @@ button {
   color: black;
   background-color: white;
   width: 100vw;
-  margin-top: 0px;;
+  margin-top: 0px;
+  margin-bottom: 30px;
 }
 
 .main-page {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   text-align: center;
   background-color: white;
-  height: 80vh;
+  height: 75vh;
   width: 50vw;
+  border: solid #48E0C2 30px;
+}
+
+.welcome {
+  font-size: 50px;
 }
