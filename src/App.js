@@ -1,16 +1,20 @@
-import React, { useState } from "react";
-import { fetchAccountAPI } from "./apiCalls";
+import React, { useState, useEffect } from "react";
+import { fetchAccountAPI } from "./apiCalls"
 import Form from "./Form";
 import AccountInfo from "./AccountInfo";
 import { Link, Route } from 'react-router-dom'
+import './App.css'
 const App = () => {
-  const [account, setAccount] = useState({})
-
-
+  const [accountInfo, setAccountInfo] =useState({})
+  let account;
+useEffect(()=> {
+  fetchAccountAPI()
+  .then((data) => setAccountInfo(data.account));
+},[])
 
   const updateAddress = (streetOne, streetTwo, city, region, postalCode, country, phone) => {
     fetch('http://recurly-be.herokuapp.com/api/v1/account', {
-    method: 'POST',
+    method: 'PUT',
     body: JSON.stringify({
         "street1": `${streetOne}`,
         "street2": `${streetTwo}`,
@@ -24,28 +28,30 @@ const App = () => {
       'Content-Type': 'application/json'
     }
   }).then(response => response.json())
-  .then(response => console.log('post response', response))
+  .then(response => {
+    console.log('post response', response)
+    // account = response
+    console.log(response)
+    setAccountInfo(response)
+  })
   }
   return(
-    <div>
+    <div className="App">
+      <h1 className='title'>Recurly Take Home</h1>
       <Route exact path='/'>
-        <h1>Recurly Take Home</h1>
-        <Link to='/account'>
-          <button onClick={() => {
-            fetchAccountAPI()
-            .then((data) => {
-             return setAccount(data)
-            })
-            console.log( typeof data)
-        }}>Click for Account Info</button>
-      </Link>
+        <div className='main-page'>
+          <Link to='/account'>
+            <button>Click for Account Info</button>
+          </Link>
+        </div>
       </Route>
       <Route path='/account'>
-        <AccountInfo account={account}/>
-        <Link to='/update'><button onClick={() => console.log(account)}>Click here to update address information.</button></Link>
+        <AccountInfo accountInfo={accountInfo}/>
+        <Link to='/update'><button onClick={() => console.log(accountInfo)}>Click here to update address information.</button></Link>
+        <Link to='/'><button>Click here to return to the homepage</button></Link>
       </Route>
       <Route path='/update'>
-        <Form />
+        <Form updateAddress={updateAddress}/>
       </Route>
     </div>
   )

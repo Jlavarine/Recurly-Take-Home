@@ -1,31 +1,36 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 
-
-const Form = () => {
-    const [ streetOne, setStreetOne] = useState('');
-    const [ streetTwo, setStreetTwo] = useState('');
+const Form = ({updateAddress}) => {
+    const [ street1, setStreet1] = useState('');
+    const [ street2, setStreet2] = useState('');
     const [ city, setCity] = useState('');
     const [ region, setRegion] = useState('');
     const [ postalCode, setPostalCode] = useState('');
     const [ country, setCountry] = useState('');
     const [ phone, setPhone] = useState('');
 
+
+    const submitUpdate = (event) => {
+      event.preventDefault()
+      updateAddress(street1, street2, city, region, postalCode, country, phone)
+    }
     return (
         <div className='form-container'>
-          <form>
+          <form onSubmit={(event) => submitUpdate(event)}>
             <h2>Update Address</h2>
             <input
             type='text'
             placeholder='Street 1'
-            value={streetOne}
-            onChange={(event) => setStreetOne(event.target.value)}
+            value={street1}
+            onChange={(event) => setStreet1(event.target.value)}
             >
             </input>
             <input
             type='text'
             placeholder='Street 2'
-            value={streetTwo}
-            onChange={(event) => setStreetTwo(event.target.value)}
+            value={street2}
+            onChange={(event) => setStreet2(event.target.value)}
             >
             </input>
             <input
@@ -65,6 +70,7 @@ const Form = () => {
             </input>
             <input type="submit" placeholder="Register Pet" />
           </form>
+          <Link to='/account'><button>Return to account info</button></Link>
         </div>
     )
 }

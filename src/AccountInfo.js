@@ -1,18 +1,17 @@
-import React from "react";
-
-const AccountInfo = ({account}) => {
-    if(account) {
+import React, { useEffect, useState }from "react";
+const AccountInfo = ({accountInfo}) => {
+    if(accountInfo) {
         return(
             <div>
                 <h2>Account Info</h2>
-                <p>First Name: {account.first_name}</p>
-                <p>Last Name: {account.last_name}</p>
-                <p>Address:</p><hr></hr>
-                <p>Street: {account.street1}</p>
-                <p>City: {account.city}</p>
-                <p>Country: {account.country}</p>
-                <p>Postal Code: {account.postal_code}</p>
-                <p>Phone: {account.phone}</p>
+                <p>First Name: {accountInfo.first_name}</p>
+                <p>Last Name: {accountInfo.last_name}</p>
+                <hr></hr>
+                <p>Street: {accountInfo.address.street1}</p>
+                <p>City: {accountInfo.address.city}</p>
+                <p>Country: {accountInfo.address.country}</p>
+                <p>Postal Code: {accountInfo.address.postal_code}</p>
+                <p>Phone: {accountInfo.address.phone}</p>
             </div>
         )
     }
