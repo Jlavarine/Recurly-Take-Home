@@ -10,6 +10,7 @@ const Form = ({updateAddress}) => {
     const [ country, setCountry] = useState('');
     const [ phone, setPhone] = useState('');
     const [submitted, setSubmitted] = useState(false)
+    const [inputs, setInputs] = useState(false)
 
     const clearInputs = () => {
       setStreet1('')
@@ -22,10 +23,16 @@ const Form = ({updateAddress}) => {
     }
 
     const submitUpdate = (event) => {
-      event.preventDefault()
-      updateAddress(street1, street2, city, region, postalCode, country, phone)
-      setSubmitted(true)
-      clearInputs()
+      if(street1 && street2 && city && region && postalCode && phone) {
+        event.preventDefault()
+        updateAddress(street1, street2, city, region, postalCode, country, phone)
+        setSubmitted(true)
+        setInputs(false)
+        clearInputs()
+      }else {
+        event.preventDefault()
+        setInputs(true)
+      }
     }
     return (
         <div className='form-container'>
@@ -83,6 +90,7 @@ const Form = ({updateAddress}) => {
             <input type="submit" placeholder="Register Pet" />
           </form>
           {submitted && <p>You updated your address</p>}
+          {inputs && <p>Please fill all fields</p>}
           <Link to='/account'><button>Return to account info</button></Link>
         </div>
       
