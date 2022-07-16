@@ -21,9 +21,11 @@ const Form = ({updateAddress}) => {
       setCountry('')
       setPhone('')
     }
+    // resets the inputs after submission
 
     const submitUpdate = (event) => {
       if(street1 && street2 && city && region && postalCode && phone) {
+        // checkiing to make sure every field is filled out
         event.preventDefault()
         updateAddress(street1, street2, city, region, postalCode, country, phone)
         setSubmitted(true)
@@ -91,6 +93,7 @@ const Form = ({updateAddress}) => {
           </form>
           {submitted && <p>You updated your address</p>}
           {inputs && <p>Please fill all fields</p>}
+          {/* conditionally rendering the above messages if either condition is met */}
           <Link to='/account'><button>Return to account info</button></Link>
         </div>
       

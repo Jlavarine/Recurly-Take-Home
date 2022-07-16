@@ -1,8 +1,9 @@
-import React, { useEffect, useState }from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import './AccountInfo.css'
 const AccountInfo = ({accountInfo}) => {
     if(accountInfo) {
+// checking to make sure that accountInfo is defined to avoid a broken page
         return(
             <div className="account-info">
                 <div>
@@ -22,6 +23,6 @@ const AccountInfo = ({accountInfo}) => {
                 </div>
             </div>
         )
-    }
+    } 
 }
 export default AccountInfo

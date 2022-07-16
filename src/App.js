@@ -6,11 +6,12 @@ import { Link, Route } from 'react-router-dom'
 import './App.css'
 const App = () => {
   const [accountInfo, setAccountInfo] =useState({})
-  let account;
-useEffect(()=> {
-  fetchAccountAPI()
-  .then((data) => setAccountInfo(data.account));
-},[])
+  // creates a global variable to store my fetched account for use throughout the app
+  useEffect(()=> {
+    fetchAccountAPI()
+    .then((data) => setAccountInfo(data.account));
+  },[])
+  // Acts as a componentDidMount to ensure accountInfo is populated on pageload
 
   const updateAddress = (streetOne, streetTwo, city, region, postalCode, country, phone) => {
     fetch('http://recurly-be.herokuapp.com/api/v1/account', {
@@ -30,11 +31,11 @@ useEffect(()=> {
   }).then(response => response.json())
   .then(response => {
     console.log('post response', response)
-    // account = response
-    console.log(response)
     setAccountInfo(response)
   })
   }
+  // fetch call to update the account's address
+  // setting accountInfo to the response from the put (which is the new account object)
   return(
     <div className="App">
       <h1 className='title'>Recurly Take Home</h1>
