@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 
-const Form = ({ user, registerDog }) => {
+const Form = () => {
     const [ streetOne, setStreetOne] = useState('');
     const [ streetTwo, setStreetTwo] = useState('');
     const [ city, setCity] = useState('');
@@ -9,15 +9,6 @@ const Form = ({ user, registerDog }) => {
     const [ postalCode, setPostalCode] = useState('');
     const [ country, setCountry] = useState('');
     const [ phone, setPhone] = useState('');
-
-
-
-//  [...skills, new skill]
-
-// const submitDog = (event) => {
-//   event.preventDefault();
-//   registerDog(name,age,breed,skills);
-// }
 
     return (
         <div className='form-container'>
@@ -52,7 +43,7 @@ const Form = ({ user, registerDog }) => {
             >
             </input>
             <input
-            type='number'
+            type='text'
             placeholder='Postal Code'
             value={postalCode}
             onChange={(event) => setPostalCode(event.target.value)}
@@ -66,7 +57,7 @@ const Form = ({ user, registerDog }) => {
             >
             </input>
             <input
-            type='number'
+            type='text'
             placeholder='Phone'
             value={phone}
             onChange={(event) => setPhone(event.target.value)}
