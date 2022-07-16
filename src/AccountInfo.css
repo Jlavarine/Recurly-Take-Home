@@ -1,0 +1,24 @@
+span {
+    font-weight: bolder;
+}
+
+.account-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: white;
+    height: 75vh;
+    width: 75vw;
+    border: solid #48E0C2 30px;
+}
+.info-title {
+    font-size: 3rem;
+}
+
+.info-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 80vw;
+}
