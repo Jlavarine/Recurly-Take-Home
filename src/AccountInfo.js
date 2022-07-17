@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import './AccountInfo.css'
-const AccountInfo = ({accountInfo}) => {
+import { fetchAccountAPI } from "./apiCalls";
+const AccountInfo = () => {
+    
+    const [accountInfo, setAccountInfo] =useState()
+
+    useEffect(()=> {
+        setAccountInfo(null)
+        fetchAccountAPI()
+        .then((data) => setAccountInfo(data.account));
+      },[])
+
     if(accountInfo) {
 // checking to make sure that accountInfo is defined to avoid a broken page
         return(
@@ -18,7 +28,7 @@ const AccountInfo = ({accountInfo}) => {
                     <p><span>Phone:</span> {accountInfo.address.phone}</p>
                 </div>
                 <div className="info-buttons">
-                    <Link to='/update'><button onClick={() => console.log(accountInfo)}>Update address</button></Link>
+                    <Link to='/update'><button onClick={() => setAccountInfo(null)}>Update address</button></Link>
                     <Link to='/'><button>Homepage</button></Link>
                 </div>
             </div>
