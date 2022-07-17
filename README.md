@@ -1,9 +1,5 @@
 # Recurly Take Home Assessment
 
-## Deployed Page
-
-You can access deployed application [HERE!](https://spellcaster-react.herokuapp.com/)
-
 ## Technologies
 
 - React
