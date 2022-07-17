@@ -34,6 +34,7 @@ const App = () => {
   }
   // fetch call to update the account's address
   // setting accountInfo to the response from the put (which is the new account object)
+  
   return (
     <div className="App">
       <h1 className='title'>Recurly Take Home</h1>
@@ -54,4 +55,5 @@ const App = () => {
     </div>
   )
 }
+
 export default App

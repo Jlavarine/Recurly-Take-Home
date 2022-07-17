@@ -3,18 +3,17 @@ import { Link } from "react-router-dom";
 import './AccountInfo.css'
 import { fetchAccountAPI } from "./apiCalls";
 const AccountInfo = () => {
-    
-    const [accountInfo, setAccountInfo] =useState()
 
-    useEffect(()=> {
+    const [accountInfo, setAccountInfo] = useState()
+
+    useEffect(() => {
         setAccountInfo(null)
         fetchAccountAPI()
-        .then((data) => setAccountInfo(data.account));
-      },[])
-
-    if(accountInfo) {
-// checking to make sure that accountInfo is defined to avoid a broken page
-        return(
+            .then((data) => setAccountInfo(data.account));
+    }, [])
+    if (accountInfo) {
+        // checking to make sure that accountInfo is defined to avoid a broken page
+        return (
             <div className="account-info">
                 <div>
                     <h2 className="info-title">Account Information</h2>
@@ -33,6 +32,6 @@ const AccountInfo = () => {
                 </div>
             </div>
         )
-    } 
+    }
 }
 export default AccountInfo
